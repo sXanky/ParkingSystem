@@ -3,27 +3,53 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Navigation</title>
+    <title>Navigation - Smart Parking System</title>
     <link rel="stylesheet" href="index.css">
 </head>
 <body>
-    <header class="header">
-        <h1>Navigation Dashboard</h1>
+    <header>
+        <nav>
+            <div class="logo">
+                <h1>Smart Parking System</h1>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="parking_spaces.html">Parking Spaces</a></li>
+                <li><a href="navigation.html" class="active">Navigation</a></li>
+                <li><a href="analytics.html">Analytics</a></li>
+            </ul>
+            <div class="search-bar">
+                <input type="text" placeholder="Search...">
+                <button>Search</button>
+            </div>
+            <div class="auth-options" style="margin-left: auto;">
+                <a href="sign_up.html">Sign Up</a><br>
+                <a href="sign_in.html">Sign In</a>
+            </div>
+        </nav>
     </header>
-    <nav>
-        <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="parking_spaces.html">Parking Spaces</a></li>
-          <li><a href="navigation.html">Navigation</a></li>
-          <li><a href="analytics.html">Analytics</a></li>
-        </ul>
-      </nav>
-
-    <div class="content">
-        <h1>Welcome to our website!</h1>
-        <p>This is a sample website with a navigation bar.</p>
-    </div>
-
-    <script src="navigation.js"></script>
+    <main>
+        <section id="navigation">
+            <h2>Navigation</h2>
+            <p>Get turn-by-turn directions to your desired parking space</p>
+            <form id="navigation-form">
+                <label for="start-point">Starting Point:</label>
+                <input type="text" id="start-point" placeholder="Enter starting point">
+                <br><br>
+                <label for="end-point">Destination:</label>
+                <input type="text" id="end-point" placeholder="Enter parking space number">
+                <br><br>
+                <button id="get-directions">Get Directions</button>
+            </form>
+            <div id="directions-container">
+                <h3>Directions:</h3>
+                <ul id="directions-list"></ul>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>Copyright &copy; 2023 Smart Parking System</p>
+    </footer>
+    <script src="index.js"></script>
 </body>
 </html>

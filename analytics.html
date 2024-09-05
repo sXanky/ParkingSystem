@@ -3,100 +3,142 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Analytics</title>
-    <link rel="stylesheet" href="analytics.css">
+    <title>Smart Parking System - Analytics</title>
+    <link rel="stylesheet" href="index.css">
 </head>
 <body>
-    
-
-    <header class="header">
-        <h1>Analytics Dashboard</h1>
+    <header>
+        <nav>
+            <div class="logo">
+                <h1>Smart Parking System</h1>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="parking_spaces.html">Parking Spaces</a></li>
+                <li><a href="navigation.html">Navigation</a></li>
+                <li><a href="analytics.html" class="active">Analytics</a></li>
+            </ul>
+            <div class="search-bar">
+                <input type="text" placeholder="Search...">
+                <button>Search</button>
+            </div>
+            <div class="auth-options" style="margin-left: auto;">
+                <a href="sign_up.html">Sign Up</a><br>
+                <a href="sign_in.html">Sign In</a>
+            </div>
+        </nav>
     </header>
-    <nav>
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="parking_spaces.html">Parking Spaces</a></li>
-        <li><a href="navigation.html">Navigation</a></li>
-        <li><a href="analytics.html">Analytics</a></li>
-      </ul>
-    </nav>
-
-
-    <main class="main">
-        <section class="section">
-            <h2>Overview</h2>
-            <div class="card">
-                <h3>Users</h3>
-                <p>10,000</p>
+    <main>
+        <section id="analytics">
+            <h2>Analytics and Insights</h2>
+            <p>View usage patterns and demand forecasting for parking spaces</p>
+            <div class="analytics-container">
+                <div class="chart">
+                    <h3>Parking Space Occupancy Rate</h3>
+                    <canvas id="occupancy-chart" width="400" height="200"></canvas>
+                </div>
+                <div class="chart">
+                    <h3>Parking Space Demand Forecast</h3>
+                    <canvas id="demand-forecast-chart" width="400" height="200"></canvas>
+                </div>
+                <div class="chart">
+                    <h3>Top 5 Most Used Parking Spaces</h3>
+                    <ul id="top-parking-spaces-list">
+                        <li>Parking Space 1: 25% usage</li>
+                        <li>Parking Space 2: 20% usage</li>
+                        <li>Parking Space 3: 18% usage</li>
+                        <li>Parking Space 4: 15% usage</li>
+                        <li>Parking Space 5: 12% usage</li>
+                    </ul>
+                </div>
+                <div class="chart">
+                    <h3>Average Parking Time per Day</h3>
+                    <canvas id="average-parking-time-chart" width="400" height="200"></canvas>
+                </div>
             </div>
-            <div class="card">
-                <h3>Sessions</h3>
-                <p>50,000</p>
-            </div>
-            <div class="card">
-                <h3>Bounce Rate</h3>
-                <p>20%</p>
-            </div>
-        </section>
-        <section class="section">
-            <h2>Top Pages</h2>
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>Page</th>
-                        <th>Views</th>
-                        <th>Unique Views</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Home</td>
-                        <td>10,000</td>
-                        <td>5,000</td>
-                    </tr>
-                    <tr>
-                        <td>About</td>
-                        <td>5,000</td>
-                        <td>2,000</td>
-                    </tr>
-                    <tr>
-                        <td>Contact</td>
-                        <td>2,000</td>
-                        <td>1,000</td>
-                    </tr>
-                </tbody>
-            </table>
-        </section>
-        <section class="section">
-            <h2>Top Referrers</h2>
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>Referrer</th>
-                        <th>Views</th>
-                        <th>Unique Views</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Google</td>
-                        <td>10,000</td>
-                        <td>5,000</td>
-                    </tr>
-                    <tr>
-                        <td>Facebook</td>
-                        <td>5,000</td>
-                        <td>2,000</td>
-                    </tr>
-                    <tr>
-                        <td>Twitter</td>
-                        <td>2,000</td>
-                        <td>1,000</td>
-                    </tr>
-                </tbody>
-            </table>
         </section>
     </main>
-    <script src="script.js"></script>
+    <footer>
+        <p>Copyright &copy; 2023 Smart Parking System</p>
+    </footer>
+    <script src="index.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        // Chart.js configuration
+        const occupancyChart = new Chart(document.getElementById('occupancy-chart'), {
+            type: 'line',
+            data: {
+                labels: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
+                datasets: [{
+                    label: 'Occupancy Rate',
+                    data: [60, 70, 65, 75, 80, 85, 90],
+                    backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                    borderColor: 'rgba(255, 99, 132, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+
+        const demandForecastChart = new Chart(document.getElementById('demand-forecast-chart'), {
+            type: 'bar',
+            data: {
+                labels: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
+                datasets: [{
+                    label: 'Demand Forecast',
+                    data: [100, 120, 110, 130, 140, 150, 160],
+                    backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                    borderColor: 'rgba(54, 162, 235, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+
+        const averageParkingTimeChart = new Chart(document.getElementById('average-parking-time-chart'), {
+            type: 'pie',
+            data: {
+                labels: ['0-1 hour', '1-2 hours', '2-3 hours', '3-4 hours', '4-5 hours'],
+                datasets: [{
+                    label: 'Average Parking Time',
+                    data: [20, 30, 25, 15, 10],
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(153, 102, 255, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    </script>
 </body>
 </html>
