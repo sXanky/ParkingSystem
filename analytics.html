@@ -63,82 +63,144 @@
     </footer>
     <script src="index.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script>
-        // Chart.js configuration
-        const occupancyChart = new Chart(document.getElementById('occupancy-chart'), {
-            type: 'line',
-            data: {
-                labels: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
-                datasets: [{
-                    label: 'Occupancy Rate',
-                    data: [60, 70, 65, 75, 80, 85, 90],
-                    backgroundColor: 'rgba(255, 99, 132, 0.2)',
-                    borderColor: 'rgba(255, 99, 132, 1)',
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                scales: {
-                    y: {
-                        beginAtZero: true
-                    }
-                }
-            }
-        });
+Verify
 
-        const demandForecastChart = new Chart(document.getElementById('demand-forecast-chart'), {
-            type: 'bar',
-            data: {
-                labels: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
-                datasets: [{
-                    label: 'Demand Forecast',
-                    data: [100, 120, 110, 130, 140, 150, 160],
-                    backgroundColor: 'rgba(54, 162, 235, 0.2)',
-                    borderColor: 'rgba(54, 162, 235, 1)',
-                    borderWidth: 1
-                }]
+Open In Editor
+Edit
+Run
+Copy code
+<script>
+    // Chart.js configuration
+    const occupancyChart = new Chart(document.getElementById('occupancy-chart'), {
+        type: 'line',
+        data: {
+            labels: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
+            datasets: [{
+                label: 'Occupancy Rate',
+                data: [60, 70, 65, 75, 80, 85, 90],
+                backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                borderColor: 'rgba(255, 99, 132, 1)',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    title: {
+                        display: true,
+                        text: 'Occupancy Rate (%)'
+                    }
+                },
+                x: {
+                    title: {
+                        display: true,
+                        text: 'Day of the Week'
+                    }
+                }
             },
-            options: {
-                scales: {
-                    y: {
-                        beginAtZero: true
+            plugins: {
+                legend: {
+                    display: false
+                }
+            },
+            layout: {
+                padding: {
+                    top: 20
+                }
+            },
+            scales: {
+                y: {
+                    ticks: {
+                        callback: function(value) {
+                            return value + '%';
+                        }
                     }
                 }
             }
-        });
+        }
+    });
 
-        const averageParkingTimeChart = new Chart(document.getElementById('average-parking-time-chart'), {
-            type: 'pie',
-            data: {
-                labels: ['0-1 hour', '1-2 hours', '2-3 hours', '3-4 hours', '4-5 hours'],
-                datasets: [{
-                    label: 'Average Parking Time',
-                    data: [20, 30, 25, 15, 10],
-                    backgroundColor: [
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(54, 162, 235, 0.2)',
-                        'rgba(255, 206, 86, 0.2)',
-                        'rgba(75, 192, 192, 0.2)',
-                        'rgba(153, 102, 255, 0.2)'
-                    ],
-                    borderColor: [
-                        'rgba(255, 99, 132, 1)',
-                        'rgba(54, 162, 235, 1)',
-                        'rgba(255, 206, 86, 1)',
-                        'rgba(75, 192, 192, 1)',
-                        'rgba(153, 102, 255, 1)'
-                    ],
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                scales: {
-                    y: {
-                        beginAtZero: true
+    const demandForecastChart = new Chart(document.getElementById('demand-forecast-chart'), {
+        type: 'bar',
+        data: {
+            labels: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
+            datasets: [{
+                label: 'Demand Forecast',
+                data: [100, 120, 110, 130, 140, 150, 160],
+                backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                borderColor: 'rgba(54, 162, 235, 1)',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    title: {
+                        display: true,
+                        text: 'Demand Forecast (units)'
+                    }
+                },
+                x: {
+                    title: {
+                        display: true,
+                        text: 'Day of the Week'
                     }
                 }
+            },
+            plugins: {
+                legend: {
+                    display: false
+                }
+            },
+            layout: {
+                padding: {
+                    top: 20
+                }
             }
-        });
-    </script>
-</body>
-</html>
+        }
+    });
+
+    const averageParkingTimeChart = new Chart(document.getElementById('average-parking-time-chart'), {
+        type: 'pie',
+        data: {
+            labels: ['0-1 hour', '1-2 hours', '2-3 hours', '3-4 hours', '4-5 hours'],
+            datasets: [{
+                label: 'Average Parking Time',
+                data: [20, 30, 25, 15, 10],
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(153, 102, 255, 0.2)'
+                ],
+                borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    display: false
+                },
+                x: {
+                    display: false
+                }
+            },
+            plugins: {
+                legend: {
+                    display: true,
+                    position: 'top'
+                }
+            }
+        }
+    });
+</script>
